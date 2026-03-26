@@ -10,7 +10,14 @@ Services without a `profiles` key always start. Services with `profiles` only st
 
 ## Tasks
 
-1. **Add a `pgadmin` service** with the `debug` profile:
+1. **Add a public facing network** for debug containers:
+   ```yaml
+   networks:
+     debug_network:
+       driver: bridge
+   ```
+
+2. **Add a `pgadmin` service** with the `debug` profile:
    ```yaml
    pgadmin:
      image: docker.io/dpage/pgadmin4:latest
@@ -26,12 +33,13 @@ Services without a `profiles` key always start. Services with `profiles` only st
      networks:
        backend_network:
          ipv4_address: 10.0.1.40
+       debug_network:
      depends_on:
        postgres:
          condition: service_healthy
    ```
 
-2. **Add a `redisinsight` service** with the `debug` profile:
+3. **Add a `redisinsight` service** with the `debug` profile:
    ```yaml
    redisinsight:
      image: docker.io/redis/redisinsight:latest
@@ -43,6 +51,7 @@ Services without a `profiles` key always start. Services with `profiles` only st
      networks:
        backend_network:
          ipv4_address: 10.0.1.50
+       debug_network:
      depends_on:
        redis:
          condition: service_healthy

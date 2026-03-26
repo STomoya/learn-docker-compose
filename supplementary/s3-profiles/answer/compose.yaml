@@ -130,6 +130,7 @@ services:
     networks:
       backend_network:
         ipv4_address: 10.0.1.40
+      debug_network:
 
     depends_on:
       postgres:
@@ -147,6 +148,7 @@ services:
     networks:
       backend_network:
         ipv4_address: 10.0.1.50
+      debug_network:
 
     depends_on:
       redis:
@@ -169,6 +171,9 @@ networks:
       config:
         - subnet: 172.100.0.0/24
           gateway: 172.100.0.1
+
+  debug_network:
+    driver: bridge
 
 volumes:
   postgres_data:
