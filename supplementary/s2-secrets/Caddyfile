@@ -1,0 +1,22 @@
+localhost {
+    reverse_proxy 172.100.0.10:8000
+
+    # Persistence: Write logs to a file inside the container
+    log {
+        output file /var/log/caddy/access.log {
+            roll_size 10mb     # Rotate after 10MB
+            roll_keep 10       # Keep 10 rotated files
+            roll_keep_for 720h # Keep logs for 30 days
+        }
+        format json
+    }
+
+    encode zstd gzip
+
+    header {
+        Strict-Transport-Security "max-age=31536000;"
+        X-Content-Type-Options nosniff
+        X-Frame-Options DENY
+        Referrer-Policy no-referrer-when-downgrade
+    }
+}

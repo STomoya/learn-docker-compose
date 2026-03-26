@@ -1,0 +1,12 @@
+services:
+  app:
+    restart: unless-stopped
+
+  postgres:
+    restart: unless-stopped
+
+  redis:
+    restart: unless-stopped
+
+  caddy:
+    restart: unless-stopped
