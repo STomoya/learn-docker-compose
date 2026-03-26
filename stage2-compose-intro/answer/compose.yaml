@@ -1,0 +1,14 @@
+services:
+  app:
+    build:
+      dockerfile: Containerfile
+      context: .
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+      - /app/.venv

@@ -1,0 +1,5 @@
+.env
+Caddyfile
+docker-compose.yml
+.venv
+__pycache__
