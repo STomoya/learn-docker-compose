@@ -45,6 +45,17 @@ Each stage has its own directory with a `README.md` containing instructions and 
 | [6](stage6-networks-and-proxy/) | Networks & Proxy | Custom networks, network isolation, Caddy reverse proxy |
 | [7](stage7-production-ready/) | Production Ready | Resource limits, `.dockerignore`, security hardening |
 
+## Supplementary Lessons
+
+After completing the main workshop, these lessons explore additional Compose features. Each builds on the final project.
+
+| Lesson | Topic | What You Learn |
+|--------|-------|----------------|
+| [S1](supplementary/s1-compose-overrides/) | Compose Overrides | `compose.override.yaml`, multiple files with `-f`, dev vs prod configs |
+| [S2](supplementary/s2-secrets/) | Secrets Management | `secrets:` top-level key, `/run/secrets/`, `_FILE` env var convention |
+| [S3](supplementary/s3-profiles/) | Profiles | Optional services with `profiles:`, debug tools (pgAdmin, RedisInsight) |
+| [S4](supplementary/s4-scaling/) | Scaling & Replicas | `deploy.replicas`, DNS-based load balancing, dynamic scaling |
+
 ## Getting Started
 
 1. Clone this repository

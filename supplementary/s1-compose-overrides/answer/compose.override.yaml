@@ -1,0 +1,29 @@
+services:
+  app:
+    command: uv run uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+      - /app/.venv
+
+  postgres:
+    ports:
+      - "5432:5432"
+
+    deploy:
+      resources:
+        limits:
+          cpus: '4.0'
+          memory: 8G
+
+  redis:
+    ports:
+      - "6379:6379"
+
+    deploy:
+      resources:
+        limits:
+          cpus: '4.0'
+          memory: 8G
